@@ -48,10 +48,10 @@ export default HomePage;
 //   };
 // };
 
-export const getServerSideProps = async (context) => {
-  const req = context.req;
-  const res = context.res;
-  return {
-    props: { meetups: DUMMY_MEETUPS },
-  };
-};
+// export const getServerSideProps = async (context) => {
+//   const req = context.req;
+//   const res = context.res;
+//   return {
+//     props: { meetups: DUMMY_MEETUPS },
+//   };
+// };
