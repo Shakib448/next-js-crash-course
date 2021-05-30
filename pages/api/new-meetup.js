@@ -5,7 +5,7 @@ dotenv.config();
 // /api/new-meetup
 // POST /api/new-meetup
 
-export const handler = async (req, res) => {
+const handler = async (req, res) => {
   if (req.method === "POST") {
     const data = req.body;
     const client = await MongoClient.connect(process.env.MONGO_URI);
@@ -19,3 +19,5 @@ export const handler = async (req, res) => {
     res.status(201).json({ message: "Meetup inserted" });
   }
 };
+
+export default handler;
