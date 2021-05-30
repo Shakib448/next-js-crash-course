@@ -5,9 +5,17 @@ dotenv.config();
 // /api/new-meetup
 // POST /api/new-meetup
 
-export const handler = (req, res) => {
+export const handler = async (req, res) => {
   if (req.method === "POST") {
-    const { title, image, address, content } = req.body;
-    MongoClient.connect(process.env.MONGO_URI);
+    const data = req.body;
+    const client = await MongoClient.connect(process.env.MONGO_URI);
+    const db = client.db();
+    const meetupsCollection = db.collection("meetups");
+    const result = await meetupsCollection.insertOne(data);
+    console.log(result);
+
+    client.close();
+
+    res.status(201).json({ message: "Meetup inserted" });
   }
 };
