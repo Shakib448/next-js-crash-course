@@ -4,7 +4,7 @@ import classes from "./MeetupList.module.scss";
 function MeetupList({ meetups }) {
   return (
     <ul className={classes.list}>
-      {meetups.map((meetup) => (
+      {meetups?.map((meetup) => (
         <MeetupItem
           key={meetup.id}
           id={meetup.id}
