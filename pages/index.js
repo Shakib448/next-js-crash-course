@@ -2,7 +2,11 @@ import MeetupList from "../components/meetups/MeetupList";
 import { MongoClient } from "mongodb";
 
 const HomePage = ({ meetups }) => {
-  return <MeetupList meetups={meetups} />;
+  return (
+    <>
+      <MeetupList meetups={meetups} />;
+    </>
+  );
 };
 
 export default HomePage;

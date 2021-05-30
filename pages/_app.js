@@ -1,11 +1,18 @@
 import "../styles/globals.scss";
 import Layout from "../components/layout/Layout";
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <>
+      <Head>
+        <title>Next Meetup</title>
+        <meta name="description" content="Next js crash Course" />
+      </Head>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </>
   );
 }
 
