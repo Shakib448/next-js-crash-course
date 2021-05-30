@@ -8,7 +8,9 @@ dotenv.config();
 const handler = async (req, res) => {
   if (req.method === "POST") {
     const data = req.body;
-    const client = await MongoClient.connect(process.env.MONGO_URI);
+    const client = await MongoClient.connect(process.env.MONGO_URI, {
+      useUnifiedTopology: true,
+    });
     const db = client.db();
     const meetupsCollection = db.collection("meetups");
     const result = await meetupsCollection.insertOne(data);

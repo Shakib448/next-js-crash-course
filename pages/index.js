@@ -8,7 +8,9 @@ const HomePage = ({ meetups }) => {
 export default HomePage;
 
 export const getStaticProps = async () => {
-  const client = await MongoClient.connect(process.env.MONGO_URI);
+  const client = await MongoClient.connect(process.env.MONGO_URI, {
+    useUnifiedTopology: true,
+  });
   const db = client.db();
   const meetupsCollection = db.collection("meetups");
   const meetups = await meetupsCollection.find().toArray();
@@ -25,11 +27,3 @@ export const getStaticProps = async () => {
     revalidate: 1,
   };
 };
-
-// export const getServerSideProps = async (context) => {
-//   const req = context.req;
-//   const res = context.res;
-//   return {
-//     props: { meetups: DUMMY_MEETUPS },
-//   };
-// };
